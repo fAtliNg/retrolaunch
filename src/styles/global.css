@@ -1,0 +1,159 @@
+:root {
+  /* Палитра: ночное небо, хромированный текст, бирюза рабочего стола Windows 98, янтарь мигалок */
+  --ink: #0e1630;
+  --ink-deep: #0a1024;
+  --panel: #17213f;
+  --panel-raised: #1e2a4f;
+  --line: #2b3862;
+  --chrome: #d7dce6;
+  --muted: #8892ad;
+  --teal: #19b3a6;
+  --teal-soft: rgba(25, 179, 166, 0.14);
+  --amber: #ffc23d;
+
+  --font-display: 'Russo One', 'Arial Black', sans-serif;
+  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: clamp(2rem, 4vw, 2.75rem);
+  --step-4: clamp(2.5rem, 6.5vw, 4.75rem);
+
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --page-max: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(25, 179, 166, 0.12), transparent 60%),
+    var(--ink);
+  color: var(--chrome);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  margin: 0;
+  letter-spacing: 0.005em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--teal);
+  color: var(--ink);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Кнопки — одна система на весь сайт */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: var(--radius-s);
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: var(--step-0);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button-primary {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+.button-primary:hover {
+  background: #ffd36e;
+}
+
+.button-ghost {
+  border-color: var(--line);
+  color: var(--chrome);
+  background: transparent;
+}
+
+.button-ghost:hover {
+  border-color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

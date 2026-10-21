@@ -1,0 +1,75 @@
+.disc {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  container-type: inline-size;
+}
+
+/* Переливы, как у настоящего CD под лампой */
+.surface {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 0 34%, rgba(255, 255, 255, 0.08) 35%, transparent 36%),
+    repeating-radial-gradient(circle, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 3px),
+    conic-gradient(
+      from 20deg,
+      #c9ced9,
+      #9fe6dd 8%,
+      #c9ced9 16%,
+      #f0c6e6 24%,
+      #c9ced9 33%,
+      #ffe39a 41%,
+      #c9ced9 50%,
+      #9fe6dd 58%,
+      #c9ced9 66%,
+      #b9b2ff 74%,
+      #c9ced9 83%,
+      #ffd0b0 91%,
+      #c9ced9
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+/* Белая наклейка, на которой подписали игру от руки */
+.label {
+  position: absolute;
+  inset: 17%;
+  border-radius: 50%;
+  background: #f3f1ea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 9% 11%;
+  color: #1c2a6b;
+  text-align: center;
+  -webkit-mask: radial-gradient(circle, transparent 0 25%, #000 25.5%);
+  mask: radial-gradient(circle, transparent 0 25%, #000 25.5%);
+}
+
+.labelMain {
+  font-family: var(--font-display);
+  font-size: clamp(11px, 9cqi, 56px);
+  line-height: 1;
+  transform: rotate(-6deg);
+}
+
+.labelSub {
+  margin-top: 4%;
+  font-size: clamp(8px, 3.4cqi, 16px);
+  font-weight: 700;
+  opacity: 0.7;
+  transform: rotate(-6deg);
+}
+
+.hub {
+  position: absolute;
+  inset: 44%;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35);
+}

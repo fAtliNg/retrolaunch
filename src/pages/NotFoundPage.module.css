@@ -1,0 +1,27 @@
+.page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 48px;
+  padding-block: 96px;
+}
+
+.disc {
+  width: min(60vw, 260px);
+  opacity: 0.9;
+}
+
+.text {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  max-width: 40ch;
+}
+
+.title {
+  font-size: var(--step-3);
+}
+
+.lead {
+  color: var(--muted);
+}

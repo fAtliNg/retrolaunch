@@ -1,0 +1,54 @@
+.footer {
+  margin-top: 96px;
+  border-top: 1px solid var(--line);
+  background: var(--ink-deep);
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  padding-block: 40px 48px;
+}
+
+.about {
+  max-width: 52ch;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  margin-bottom: 8px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  transition: border-color 0.15s ease;
+}
+
+.author:hover {
+  border-color: var(--teal);
+}
+
+.authorLabel {
+  color: var(--muted);
+  font-size: var(--step--1);
+}
+
+.authorUrl {
+  font-weight: 700;
+  color: var(--teal);
+}
