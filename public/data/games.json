@@ -7,7 +7,10 @@
     "developer": "EA Canada, EA Seattle",
     "publisher": "Electronic Arts",
     "platform": "windows-9x",
-    "genres": ["Гонки", "Погоня"],
+    "genres": [
+      "Гонки",
+      "Погоня"
+    ],
     "status": "coming-soon",
     "tagline": "Ночная трасса, сирены за спиной и Diablo SV на пределе.",
     "description": [
@@ -22,23 +25,894 @@
       "Игра вдвоём на одном компьютере"
     ],
     "controls": [
-      { "keys": ["↑", "↓"], "action": "Газ и тормоз" },
-      { "keys": ["←", "→"], "action": "Руль" },
-      { "keys": ["Пробел"], "action": "Ручной тормоз" },
-      { "keys": ["H"], "action": "Сигнал" },
-      { "keys": ["C"], "action": "Смена камеры" },
-      { "keys": ["Esc"], "action": "Пауза" }
+      {
+        "keys": [
+          "↑",
+          "↓"
+        ],
+        "action": "Газ и тормоз"
+      },
+      {
+        "keys": [
+          "←",
+          "→"
+        ],
+        "action": "Руль"
+      },
+      {
+        "keys": [
+          "Пробел"
+        ],
+        "action": "Ручной тормоз"
+      },
+      {
+        "keys": [
+          "H"
+        ],
+        "action": "Сигнал"
+      },
+      {
+        "keys": [
+          "C"
+        ],
+        "action": "Смена камеры"
+      },
+      {
+        "keys": [
+          "Esc"
+        ],
+        "action": "Пауза"
+      }
     ],
     "requirements": {
       "original": "Pentium 166, 32 МБ ОЗУ, 3D-ускоритель",
       "browser": "Свежий Chrome, Edge или Firefox, от 4 ГБ ОЗУ"
     },
+    "emulator": {
+      "engine": "js-dos",
+      "bundle": "local-games/nfs-3.jsdos",
+      "backend": "dosboxX",
+      "voodoo": true,
+      "localOnly": true
+    },
+    "accent": "#FFC629",
+    "art": {
+      "card": "covers/nfs-3/card.webp",
+      "full": "covers/nfs-3/full.webp",
+      "alt": "Обложка PC-версии Need for Speed III: Hot Pursuit: жёлтая Lamborghini Diablo SV уходит от полиции",
+      "focus": "50% 28%"
+    },
     "cover": {
-      "sky": ["#1B1446", "#4A1F5C", "#E2574C"],
+      "sky": [
+        "#1B1446",
+        "#4A1F5C",
+        "#E2574C"
+      ],
       "sun": "#FFC23D",
       "road": "#10121E",
       "stripe": "#F4F1D0",
-      "lights": ["#FF3B47", "#3B7BFF"]
+      "lights": [
+        "#FF3B47",
+        "#3B7BFF"
+      ]
+    }
+  },
+  {
+    "slug": "doom",
+    "title": "DOOM",
+    "shortTitle": "DOOM",
+    "year": 1993,
+    "developer": "id Software",
+    "publisher": "id Software",
+    "platform": "dos",
+    "genres": [
+      "Шутер"
+    ],
+    "status": "playable",
+    "tagline": "Марсианская база, дробовик и орды демонов. Игра, с которой начался жанр.",
+    "description": [
+      "Шутер от первого лица, который в 1993 году собрал вокруг себя все компьютерные клубы. Вы — космический пехотинец на базе UAC, где эксперименты с телепортацией открыли ворота в ад.",
+      "Здесь доступен первый эпизод, Knee-Deep in the Dead: девять уровней в той самой shareware-версии, которую id Software разрешила свободно распространять."
+    ],
+    "features": [
+      "Первый эпизод целиком: 9 уровней",
+      "Оригинальная DOS-версия 1.9",
+      "Звук Sound Blaster и музыка FM-синтеза",
+      "Прогресс сохраняется в браузере"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "↑",
+          "↓"
+        ],
+        "action": "Вперёд и назад"
+      },
+      {
+        "keys": [
+          "←",
+          "→"
+        ],
+        "action": "Поворот"
+      },
+      {
+        "keys": [
+          "Пробел"
+        ],
+        "action": "Стрелять"
+      },
+      {
+        "keys": [
+          "E"
+        ],
+        "action": "Открыть дверь, нажать кнопку"
+      },
+      {
+        "keys": [
+          "Shift"
+        ],
+        "action": "Бег"
+      },
+      {
+        "keys": [
+          "Alt"
+        ],
+        "action": "Шаг вбок вместе со стрелками"
+      },
+      {
+        "keys": [
+          "1–7"
+        ],
+        "action": "Выбор оружия"
+      },
+      {
+        "keys": [
+          "Tab"
+        ],
+        "action": "Карта"
+      },
+      {
+        "keys": [
+          "Esc"
+        ],
+        "action": "Меню, сохранение"
+      }
+    ],
+    "requirements": {
+      "original": "386DX, 4 МБ ОЗУ, MS-DOS 3.3",
+      "browser": "Любой современный браузер"
+    },
+    "emulator": {
+      "engine": "js-dos",
+      "bundle": "bundles/doom.jsdos",
+      "backend": "dosbox"
+    },
+    "accent": "#E8381E",
+    "art": {
+      "card": "covers/doom/card.webp",
+      "full": "covers/doom/full.webp",
+      "alt": "Титульный экран DOOM: космический пехотинец с оружием на фоне логотипа"
+    },
+    "license": {
+      "summary": "Shareware-версия 1.9: id Software разрешила свободно распространять её без изменений.",
+      "links": [
+        {
+          "label": "Оригинальный архив doom19s.zip (idgames)",
+          "url": "https://www.gamers.org/pub/idgames/idstuff/doom/doom19s.zip"
+        }
+      ]
+    }
+  },
+  {
+    "slug": "freedoom-1",
+    "title": "Freedoom: Phase 1",
+    "shortTitle": "Freedoom 1",
+    "year": 2024,
+    "developer": "Freedoom Project",
+    "publisher": "Freedoom Project",
+    "platform": "dos",
+    "genres": [
+      "Шутер"
+    ],
+    "status": "playable",
+    "tagline": "Свободный DOOM: 36 карт в четырёх эпизодах, всё сделано сообществом с нуля.",
+    "description": [
+      "Freedoom — полностью свободная игра на движке DOOM: уровни, монстры, оружие, звуки и музыка нарисованы и записаны сообществом с нуля и распространяются под лицензией BSD.",
+      "Phase 1 — это четыре эпизода в формате классического DOOM: базы, техно-лабиринты и адские уровни."
+    ],
+    "features": [
+      "Полностью свободная игра",
+      "Запускается в DOS через FastDoom",
+      "Звук Sound Blaster и FM-музыка",
+      "Прогресс сохраняется в браузере"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "↑",
+          "↓"
+        ],
+        "action": "Вперёд и назад"
+      },
+      {
+        "keys": [
+          "←",
+          "→"
+        ],
+        "action": "Поворот"
+      },
+      {
+        "keys": [
+          "Пробел"
+        ],
+        "action": "Стрелять"
+      },
+      {
+        "keys": [
+          "E"
+        ],
+        "action": "Открыть дверь, нажать кнопку"
+      },
+      {
+        "keys": [
+          "Shift"
+        ],
+        "action": "Бег"
+      },
+      {
+        "keys": [
+          "Alt"
+        ],
+        "action": "Шаг вбок вместе со стрелками"
+      },
+      {
+        "keys": [
+          "1–7"
+        ],
+        "action": "Выбор оружия"
+      },
+      {
+        "keys": [
+          "Tab"
+        ],
+        "action": "Карта"
+      },
+      {
+        "keys": [
+          "Esc"
+        ],
+        "action": "Меню, сохранение"
+      }
+    ],
+    "requirements": {
+      "original": "486, 8 МБ ОЗУ, MS-DOS",
+      "browser": "Любой современный браузер"
+    },
+    "license": {
+      "summary": "Freedoom 0.13.0 — BSD-3-Clause. Движок FastDoom 1.3.0 — GPLv2. Файлы игры не изменены, WAD только переименован под имена DOS.",
+      "links": [
+        {
+          "label": "Freedoom 0.13.0 на GitHub",
+          "url": "https://github.com/freedoom/freedoom/releases/tag/v0.13.0"
+        },
+        {
+          "label": "Исходники FastDoom 1.3.0 (GPLv2)",
+          "url": "https://github.com/viti95/FastDoom/tree/1.3.0"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "js-dos",
+      "bundle": "bundles/freedoom1.jsdos",
+      "backend": "dosbox"
+    },
+    "accent": "#3FA34D",
+    "art": {
+      "card": "covers/freedoom1/card.webp",
+      "full": "covers/freedoom1/full.webp",
+      "alt": "Титульный экран Freedoom: Phase 1"
+    }
+  },
+  {
+    "slug": "freedoom-2",
+    "title": "Freedoom: Phase 2",
+    "shortTitle": "Freedoom 2",
+    "year": 2024,
+    "developer": "Freedoom Project",
+    "publisher": "Freedoom Project",
+    "platform": "dos",
+    "genres": [
+      "Шутер"
+    ],
+    "status": "playable",
+    "tagline": "Свободный DOOM II: длинная кампания на 32 уровня с двустволкой.",
+    "description": [
+      "Freedoom — полностью свободная игра на движке DOOM: уровни, монстры, оружие, звуки и музыка нарисованы и записаны сообществом с нуля и распространяются под лицензией BSD.",
+      "Phase 2 — кампания в формате DOOM II: 32 уровня подряд, двуствольный дробовик и монстры второй части."
+    ],
+    "features": [
+      "Полностью свободная игра",
+      "Запускается в DOS через FastDoom",
+      "Звук Sound Blaster и FM-музыка",
+      "Прогресс сохраняется в браузере"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "↑",
+          "↓"
+        ],
+        "action": "Вперёд и назад"
+      },
+      {
+        "keys": [
+          "←",
+          "→"
+        ],
+        "action": "Поворот"
+      },
+      {
+        "keys": [
+          "Пробел"
+        ],
+        "action": "Стрелять"
+      },
+      {
+        "keys": [
+          "E"
+        ],
+        "action": "Открыть дверь, нажать кнопку"
+      },
+      {
+        "keys": [
+          "Shift"
+        ],
+        "action": "Бег"
+      },
+      {
+        "keys": [
+          "Alt"
+        ],
+        "action": "Шаг вбок вместе со стрелками"
+      },
+      {
+        "keys": [
+          "1–7"
+        ],
+        "action": "Выбор оружия"
+      },
+      {
+        "keys": [
+          "Tab"
+        ],
+        "action": "Карта"
+      },
+      {
+        "keys": [
+          "Esc"
+        ],
+        "action": "Меню, сохранение"
+      }
+    ],
+    "requirements": {
+      "original": "486, 8 МБ ОЗУ, MS-DOS",
+      "browser": "Любой современный браузер"
+    },
+    "license": {
+      "summary": "Freedoom 0.13.0 — BSD-3-Clause. Движок FastDoom 1.3.0 — GPLv2. Файлы игры не изменены, WAD только переименован под имена DOS.",
+      "links": [
+        {
+          "label": "Freedoom 0.13.0 на GitHub",
+          "url": "https://github.com/freedoom/freedoom/releases/tag/v0.13.0"
+        },
+        {
+          "label": "Исходники FastDoom 1.3.0 (GPLv2)",
+          "url": "https://github.com/viti95/FastDoom/tree/1.3.0"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "js-dos",
+      "bundle": "bundles/freedoom2.jsdos",
+      "backend": "dosbox"
+    },
+    "accent": "#C2410C",
+    "art": {
+      "card": "covers/freedoom2/card.webp",
+      "full": "covers/freedoom2/full.webp",
+      "alt": "Титульный экран Freedoom: Phase 2"
+    }
+  },
+  {
+    "slug": "rogue",
+    "title": "Rogue",
+    "shortTitle": "Rogue",
+    "year": 1980,
+    "developer": "Michael Toy, Glenn Wichman, Ken Arnold",
+    "publisher": "Roguelike Restoration Project",
+    "platform": "dos",
+    "genres": [
+      "Ролевая",
+      "Рогалик"
+    ],
+    "status": "playable",
+    "tagline": "Подземелье из букв, амулет Йендора на дне и одна жизнь. Игра, давшая имя целому жанру.",
+    "description": [
+      "Rogue — исследование подземелья, нарисованного символами: @ — это вы, буквы — монстры. Каждый спуск генерируется заново, а смерть окончательна.",
+      "Это версия 5.4.4: исходный код авторов, открытый под лицензией BSD и собранный для DOS энтузиастами Roguelike Restoration Project."
+    ],
+    "features": [
+      "Каждая игра — новое подземелье",
+      "Смерть навсегда",
+      "Оригинальный код 1980-х",
+      "Свободная лицензия BSD"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "h",
+          "j",
+          "k",
+          "l"
+        ],
+        "action": "Шаг влево, вниз, вверх, вправо"
+      },
+      {
+        "keys": [
+          "y",
+          "u",
+          "b",
+          "n"
+        ],
+        "action": "Шаг по диагонали"
+      },
+      {
+        "keys": [
+          "Shift"
+        ],
+        "action": "С буквой движения — бежать"
+      },
+      {
+        "keys": [
+          ">"
+        ],
+        "action": "Спуститься по лестнице"
+      },
+      {
+        "keys": [
+          "i"
+        ],
+        "action": "Инвентарь"
+      },
+      {
+        "keys": [
+          "?"
+        ],
+        "action": "Список всех команд"
+      },
+      {
+        "keys": [
+          "S"
+        ],
+        "action": "Сохранить и выйти"
+      }
+    ],
+    "requirements": {
+      "original": "Любой IBM PC, MS-DOS",
+      "browser": "Любой современный браузер"
+    },
+    "license": {
+      "summary": "Rogue 5.4.4 — BSD-3-Clause (© Michael Toy, Ken Arnold, Glenn Wichman). DOS-сборка DJGPP с заглушкой DJ Delorie и DPMI-хостом CWSDPMI, все файлы без изменений.",
+      "links": [
+        {
+          "label": "Исходники Rogue 5.4.4",
+          "url": "https://github.com/RoguelikeRestorationProject/rogue5.4"
+        },
+        {
+          "label": "DJGPP и CWSDPMI",
+          "url": "https://www.delorie.com/djgpp/"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "js-dos",
+      "bundle": "bundles/rogue.jsdos",
+      "backend": "dosbox"
+    },
+    "accent": "#D4A72C",
+    "art": {
+      "card": "covers/rogue/card.webp",
+      "full": "covers/rogue/full.webp",
+      "alt": "Экран Rogue: комнаты и коридоры подземелья из символов"
+    }
+  },
+  {
+    "slug": "micropolis",
+    "title": "Micropolis",
+    "shortTitle": "Micropolis",
+    "year": 1989,
+    "developer": "Graeme McCutcheon (micropolisJS)",
+    "publisher": "Свободное ПО, GPLv3",
+    "platform": "web",
+    "genres": [
+      "Градостроительный симулятор"
+    ],
+    "status": "playable",
+    "tagline": "Дороги, кварталы, электростанции и вечная нехватка бюджета. Город, который растёт сам.",
+    "description": [
+      "Micropolis — открытый градостроительный симулятор, исходный код которого восходит к классике 1989 года. Вы прокладываете дороги и линии электропередачи, размечаете жилые, коммерческие и промышленные зоны и смотрите, как город оживает.",
+      "Здесь работает micropolisJS — порт на HTML5 и JavaScript от Graeme McCutcheon. Игра запускается прямо в странице, без эмулятора."
+    ],
+    "features": [
+      "Без эмулятора, родной JavaScript",
+      "Сохранение города в браузере",
+      "Бедствия: пожары, наводнения, монстр",
+      "Свободная лицензия GPLv3"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "Мышь"
+        ],
+        "action": "Строительство и выбор инструментов"
+      },
+      {
+        "keys": [
+          "↑",
+          "↓",
+          "←",
+          "→"
+        ],
+        "action": "Прокрутка карты"
+      }
+    ],
+    "requirements": {
+      "original": "Рабочая станция Unix (оригинал 1989 года)",
+      "browser": "Любой современный браузер, лучше на весь экран"
+    },
+    "license": {
+      "summary": "micropolisJS — GPLv3 с дополнительными условиями. Micropolis is a registered trademark of Micropolis Corporation (Micropolis GmbH) and is licensed here as a courtesy of the owner under the Micropolis Public Name License.",
+      "links": [
+        {
+          "label": "Исходники micropolisJS (GPLv3)",
+          "url": "https://github.com/graememcc/micropolisJS/tree/f13a1624d111d235e804bd80f48ba7c9f66a8e0f"
+        },
+        {
+          "label": "Micropolis Public Name License",
+          "url": "https://github.com/graememcc/micropolisJS/blob/master/MicropolisPublicNameLicense.md"
+        },
+        {
+          "label": "micropolis.com",
+          "url": "https://www.micropolis.com"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "iframe",
+      "src": "engines/micropolis/index.html",
+      "minWidth": 600,
+      "minHeight": 590
+    },
+    "accent": "#2F9E8F",
+    "art": {
+      "card": "covers/micropolis/card.webp",
+      "full": "covers/micropolis/full.webp",
+      "alt": "Город, собранный из тайлов Micropolis: кварталы, дороги и электростанция"
+    }
+  },
+  {
+    "slug": "colossal-cave",
+    "title": "Colossal Cave Adventure",
+    "shortTitle": "Colossal Cave",
+    "year": 1977,
+    "developer": "Will Crowther, Don Woods",
+    "publisher": "Open Adventure (Eric S. Raymond)",
+    "platform": "web",
+    "genres": [
+      "Текстовый квест"
+    ],
+    "status": "playable",
+    "tagline": "YOU ARE STANDING AT THE END OF A ROAD BEFORE A SMALL BRICK BUILDING. С этой строки начались все компьютерные квесты.",
+    "description": [
+      "Первая приключенческая игра: исследуйте пещеры, собирайте сокровища и разгадывайте загадки, набирая команды на английском — GO NORTH, TAKE LAMP, XYZZY.",
+      "Это Open Adventure — бережный порт оригинальной версии Кроутера и Вудса 1977 года, одобренный авторами и открытый под лицензией BSD."
+    ],
+    "features": [
+      "Оригинальная игра 1977 года",
+      "Команды на английском",
+      "Сохранения в браузере: SAVE и RESUME",
+      "Свободная лицензия BSD"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "Enter"
+        ],
+        "action": "Отправить команду"
+      },
+      {
+        "keys": [
+          "N",
+          "S",
+          "E",
+          "W"
+        ],
+        "action": "Идти на север, юг, восток, запад"
+      },
+      {
+        "keys": [
+          "LOOK"
+        ],
+        "action": "Осмотреться"
+      },
+      {
+        "keys": [
+          "INVENTORY"
+        ],
+        "action": "Что у вас с собой"
+      },
+      {
+        "keys": [
+          "SAVE"
+        ],
+        "action": "Сохранить игру"
+      }
+    ],
+    "requirements": {
+      "original": "PDP-10 (1977)",
+      "browser": "Любой современный браузер"
+    },
+    "license": {
+      "summary": "Open Adventure 1.22 — BSD-2-Clause. Собрано в WebAssembly без изменений игры: библиотека libedit заменена вводом строки на странице.",
+      "links": [
+        {
+          "label": "Исходники Open Adventure 1.22",
+          "url": "https://gitlab.com/esr/open-adventure/-/tree/1.22"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "iframe",
+      "src": "engines/advent/index.html"
+    },
+    "accent": "#3DDC64",
+    "art": {
+      "card": "covers/colossal-cave/card.webp",
+      "full": "covers/colossal-cave/full.webp",
+      "alt": "Зелёный терминал с первыми строками Colossal Cave Adventure"
+    }
+  },
+  {
+    "slug": "beneath-a-steel-sky",
+    "title": "Beneath a Steel Sky",
+    "shortTitle": "Steel Sky",
+    "year": 1994,
+    "developer": "Revolution Software",
+    "publisher": "Revolution Software (freeware)",
+    "platform": "dos",
+    "genres": [
+      "Квест",
+      "Киберпанк"
+    ],
+    "status": "playable",
+    "tagline": "Мегаполис под стальным небом, робот-напарник Джоуи и заговор на самом верху.",
+    "description": [
+      "Классический point-and-click квест в мрачном киберпанк-будущем. Роберт Фостер оказывается в огромном городе, где бедняки живут в небоскрёбах среди смога, а богачи — под землёй, и пытается понять, кто и зачем его сюда привёз.",
+      "Revolution Software выпустила игру бесплатно вместе с командой ScummVM. Здесь работает DOS-версия на дискетах через ScummVM, собранный для браузера."
+    ],
+    "features": [
+      "Полная игра, бесплатно от авторов",
+      "Работает через ScummVM",
+      "Сохранения в браузере",
+      "Комиксы Дейва Гиббонса в оформлении"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "Левая кнопка"
+        ],
+        "action": "Идти, смотреть"
+      },
+      {
+        "keys": [
+          "Правая кнопка"
+        ],
+        "action": "Действие с предметом"
+      },
+      {
+        "keys": [
+          "F5"
+        ],
+        "action": "Меню: сохранить, загрузить"
+      },
+      {
+        "keys": [
+          "Esc"
+        ],
+        "action": "Пропустить сцену"
+      }
+    ],
+    "requirements": {
+      "original": "386, 2 МБ ОЗУ, MS-DOS",
+      "browser": "Свежий Chrome, Edge, Firefox или Safari"
+    },
+    "license": {
+      "summary": "Игра — freeware от Revolution Software Ltd (© 1993–1994), распространяется бесплатно с сохранением readme. ScummVM v2026.4.0 — GPLv2+, собран только с движком Sky; изменён один путь загрузки данных.",
+      "links": [
+        {
+          "label": "Исходники ScummVM v2026.4.0 (GPLv2+)",
+          "url": "https://github.com/scummvm/scummvm/tree/v2026.4.0"
+        },
+        {
+          "label": "Игра на scummvm.org",
+          "url": "https://www.scummvm.org/games/#games-sky"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "iframe",
+      "src": "engines/scummvm/scummvm.html#sky"
+    },
+    "accent": "#E0702E",
+    "art": {
+      "card": "covers/beneath-a-steel-sky/card.webp",
+      "full": "covers/beneath-a-steel-sky/full.webp",
+      "alt": "Кадр из вступления Beneath a Steel Sky: башни мегаполиса"
+    }
+  },
+  {
+    "slug": "openttd",
+    "title": "OpenTTD",
+    "shortTitle": "OpenTTD",
+    "year": 2004,
+    "developer": "OpenTTD Team",
+    "publisher": "Свободное ПО, GPLv2",
+    "platform": "web",
+    "genres": [
+      "Экономическая стратегия",
+      "Транспорт"
+    ],
+    "status": "playable",
+    "tagline": "Поезда, автобусы, корабли и самолёты: постройте транспортную империю с 1950 года до наших дней.",
+    "description": [
+      "OpenTTD — открытый движок, выросший из Transport Tycoon Deluxe 1994 года. Вы прокладываете железные дороги и автотрассы, связываете города и предприятия и зарабатываете на перевозках.",
+      "Здесь работает официальная сборка OpenTTD 15.3 для браузера с полностью свободной графикой OpenGFX, звуками OpenSFX и музыкой OpenMSX."
+    ],
+    "features": [
+      "Официальная версия 15.3",
+      "Полностью свободная графика и звук",
+      "Сохранения в браузере",
+      "Генератор карт и сценарии"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "Мышь"
+        ],
+        "action": "Строительство и окна"
+      },
+      {
+        "keys": [
+          "Правая кнопка"
+        ],
+        "action": "Прокрутка карты"
+      },
+      {
+        "keys": [
+          "Колесо"
+        ],
+        "action": "Масштаб"
+      }
+    ],
+    "requirements": {
+      "original": "Windows, macOS, Linux",
+      "browser": "Свежий Chrome, Edge или Firefox, лучше на весь экран"
+    },
+    "license": {
+      "summary": "OpenTTD 15.3 — GPLv2, собран без изменений. Наборы OpenGFX 7.1 и OpenMSX 0.4.2 — GPLv2, OpenSFX 1.0.3 — CC BY-SA 3.0, входят в сборку как есть.",
+      "links": [
+        {
+          "label": "Исходники OpenTTD 15.3",
+          "url": "https://github.com/OpenTTD/OpenTTD/tree/15.3"
+        },
+        {
+          "label": "OpenGFX, OpenSFX, OpenMSX",
+          "url": "https://www.openttd.org/downloads/opengfx-releases/latest"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "iframe",
+      "src": "engines/openttd/openttd.html",
+      "minWidth": 800,
+      "minHeight": 600
+    },
+    "accent": "#4C9F38",
+    "art": {
+      "card": "covers/openttd/card.webp",
+      "full": "covers/openttd/full.webp",
+      "alt": "Титульный экран OpenTTD: город с железной дорогой на свободной графике OpenGFX"
+    }
+  },
+  {
+    "slug": "ur-quan-masters",
+    "title": "The Ur-Quan Masters",
+    "shortTitle": "Ur-Quan Masters",
+    "year": 1992,
+    "developer": "Toys for Bob; порт UQM Team",
+    "publisher": "Свободное ПО (GPL, CC BY-NC-SA)",
+    "platform": "web",
+    "genres": [
+      "Космическая RPG",
+      "Приключения"
+    ],
+    "status": "playable",
+    "tagline": "Галактика под властью Ур-Квана, флот из уцелевших рас и капитан, которому некуда отступать.",
+    "description": [
+      "The Ur-Quan Masters — открытый порт Star Control II: исследуйте сотни звёздных систем, торгуйтесь и спорьте с инопланетянами, добывайте ресурсы и собирайте союз против захватчиков. Плюс режим быстрых космических дуэлей Super Melee.",
+      "Код игры открыт по GPL, а контент — графика, музыка и озвучка — по Creative Commons BY-NC-SA. Здесь работает WebAssembly-порт uqm-wasm."
+    ],
+    "features": [
+      "Полная кампания Star Control II",
+      "Режим дуэлей Super Melee",
+      "Сохранения в браузере",
+      "Оригинальная музыка и озвучка"
+    ],
+    "controls": [
+      {
+        "keys": [
+          "↑",
+          "↓",
+          "←",
+          "→"
+        ],
+        "action": "Движение, выбор в меню"
+      },
+      {
+        "keys": [
+          "Enter"
+        ],
+        "action": "Выбор, огонь"
+      },
+      {
+        "keys": [
+          "Пробел"
+        ],
+        "action": "Спецоружие"
+      },
+      {
+        "keys": [
+          "Esc"
+        ],
+        "action": "Отмена, меню"
+      }
+    ],
+    "requirements": {
+      "original": "PC (1992), порт 2002 года",
+      "browser": "Свежий Chrome или Edge (звук в Firefox работает частично)"
+    },
+    "license": {
+      "summary": "Код UQM 0.8.0 — GPLv2. Контент — Creative Commons BY-NC-SA 2.5: только некоммерческое использование с указанием авторов. Порт uqm-wasm собран без изменений.",
+      "links": [
+        {
+          "label": "Исходники uqm-wasm",
+          "url": "https://github.com/intgr/uqm-wasm/tree/daadbb540a8c46f09dcdb0080b4212fb33e6cb94"
+        },
+        {
+          "label": "Проект The Ur-Quan Masters",
+          "url": "https://sc2.sourceforge.net"
+        }
+      ]
+    },
+    "emulator": {
+      "engine": "iframe",
+      "src": "engines/uqm/play.html"
+    },
+    "accent": "#B03A2E",
+    "art": {
+      "card": "covers/ur-quan-masters/card.webp",
+      "full": "covers/ur-quan-masters/full.webp",
+      "alt": "Титульный экран The Ur-Quan Masters: корабли над Ур-Кваном"
     }
   }
 ]
