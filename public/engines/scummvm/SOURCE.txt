@@ -1,0 +1,6 @@
+ScummVM v2026.4.0 (GPLv2+), built with dists/emscripten/build.sh: --disable-all-engines --enable-engine=sky
+Source: https://github.com/scummvm/scummvm/tree/v2026.4.0
+Game data: data/sky = BASS-Floppy-1.3.zip from https://downloads.scummvm.org (freeware, (C) Revolution Software Ltd, see readme.txt)
+
+Retrolaunch modification: in scummvm.js the HTTP filesystem fetches "/data/..." relative to the page ("./data/...")
+so the build can live in a subfolder (/engines/scummvm/). scummvm.ini is a Retrolaunch default config.

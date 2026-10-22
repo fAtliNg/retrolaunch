@@ -1,0 +1,3 @@
+micropolisJS, built unmodified from https://github.com/graememcc/micropolisJS
+commit f13a1624d111d235e804bd80f48ba7c9f66a8e0f (npm ci && npm run build)
+License: GPLv3 with additional terms (see LICENSE, COPYING) and the Micropolis Public Name License.

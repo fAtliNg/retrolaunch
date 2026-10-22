@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Ur-Quan Masters</title>
+    <style>
+      /* Retrolaunch: минимальная оболочка вместо стандартной страницы Emscripten — только canvas и прогресс загрузки */
+      html, body { height: 100%; margin: 0; background: #000; overflow: hidden; }
+      canvas { display: block; width: 100%; height: 100%; object-fit: contain; image-rendering: pixelated; }
+      #status {
+        position: fixed; inset: 0; display: grid; place-items: center;
+        color: #c9c9d1; font: 500 14px/1.4 system-ui, sans-serif; pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" tabindex="-1" oncontextmenu="event.preventDefault()"></canvas>
+    <div id="status">Loading…</div>
+    <script>
+      var statusEl = document.getElementById('status')
+      var Module = {
+        canvas: document.getElementById('canvas'),
+        print: (...args) => console.log(args.join(' ')),
+        printErr: (...args) => console.warn(args.join(' ')),
+        setStatus: (text) => {
+          var m = text && text.match(/\((\d+(?:\.\d+)?)\/(\d+)\)/)
+          statusEl.textContent = m ? 'Loading… ' + Math.round((m[1] / m[2]) * 100) + '%' : text
+          statusEl.hidden = !text
+        },
+        monitorRunDependencies: (left) => {
+          if (!left) Module.setStatus('')
+        },
+      }
+      Module.setStatus('Loading…')
+      document.addEventListener('click', () => Module.canvas.focus())
+    </script>
+    <script async src="uqm-debug.js"></script>
+  </body>
+</html>

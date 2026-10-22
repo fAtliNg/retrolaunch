@@ -1,0 +1,5 @@
+The Ur-Quan Masters 0.8.0, WebAssembly port by intgr: https://github.com/intgr/uqm-wasm
+commit daadbb540a8c46f09dcdb0080b4212fb33e6cb94, built unmodified with Emscripten 3.1.57 (config from sc2/wasm/config.state.expected).
+Code: GPLv2. Content: CC BY-NC-SA 2.5 (see COPYING) - non-commercial use only.
+uqm-debug.data (~148 MB) is not stored in Git (GitHub 100 MB limit) and must be uploaded to hosting separately.
+play.html is a minimal Retrolaunch page shell replacing uqm-debug.html (Emscripten default shell).

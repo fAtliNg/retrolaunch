@@ -1,0 +1,4 @@
+OpenTTD 15.3 (GPLv2), built unmodified with Emscripten 3.1.57 following os/emscripten/README.md (without Docker).
+Source: https://github.com/OpenTTD/OpenTTD/tree/15.3
+openttd.data contains baseset/: OpenGFX 7.1 (GPLv2), OpenSFX 1.0.3 (CC BY-SA 3.0), OpenMSX 0.4.2 (GPLv2) from https://cdn.openttd.org,
+unmodified .tar packages including their license.txt and readme.txt.

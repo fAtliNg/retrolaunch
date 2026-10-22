@@ -1,0 +1,3 @@
+Open Adventure 1.22 (BSD-2-Clause), Eric S. Raymond, based on Colossal Cave Adventure by Will Crowther and Don Woods.
+Source: https://gitlab.com/esr/open-adventure/-/tree/1.22
+Built with Emscripten 4.0.10. libedit is replaced by retrolaunch-shim/ (browser line input), cheat.c is not included.
