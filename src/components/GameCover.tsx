@@ -4,7 +4,7 @@ import styles from './GameCover.module.css'
 
 interface GameCoverProps {
   theme: GameCoverTheme
-  /** Мигалки полиции. На карточках выключены, на странице игры — включены. */
+  /** Мигалки полиции работают постоянно. Без этого флага — только при наведении на .cover-host. */
   animated?: boolean
   className?: string
 }

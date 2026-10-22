@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { useGetGamesQuery } from '../services/gamesApi'
 import type { Platform } from '../types/game'
-import { platformLabels } from '../types/game'
+import { platformLabels, statusLabels } from '../types/game'
+import { plural } from '../utils/plural'
 import GameCard from '../components/GameCard'
-import Disc from '../components/Disc'
+import GameArt from '../components/GameArt'
 import styles from './HomePage.module.css'
 
 type PlatformFilter = Platform | 'all'
@@ -13,14 +14,17 @@ const filters: { value: PlatformFilter; label: string }[] = [
   { value: 'all', label: 'Все' },
   { value: 'windows-9x', label: platformLabels['windows-9x'] },
   { value: 'dos', label: platformLabels.dos },
+  { value: 'web', label: 'Браузер' },
 ]
 
 export default function HomePage() {
   const { data: games = [], isLoading, isError, refetch } = useGetGamesQuery()
   const [query, setQuery] = useState('')
   const [platform, setPlatform] = useState<PlatformFilter>('all')
+  const searchRef = useRef<HTMLInputElement>(null)
 
-  const featured = games[0]
+  // В центре внимания — первая игра, в которую уже можно играть
+  const featured = games.find((game) => game.status === 'playable') ?? games[0]
 
   const visibleGames = useMemo(() => {
     const normalized = query.trim().toLowerCase()
@@ -34,6 +38,22 @@ export default function HomePage() {
     })
   }, [games, query, platform])
 
+  // «/» или ⌘K фокусируют поиск, как в привычных приложениях
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement
+      const typing = target.closest('input, textarea, [contenteditable="true"]')
+      const isSlash = event.key === '/' && !typing
+      const isCmdK = event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey)
+      if (isSlash || isCmdK) {
+        event.preventDefault()
+        searchRef.current?.focus()
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   const resetFilters = () => {
     setQuery('')
     setPlatform('all')
@@ -41,40 +61,75 @@ export default function HomePage() {
 
   return (
     <>
-      <section className={`container ${styles.hero}`}>
-        <div className={styles.heroText}>
-          <h1 className={styles.title}>Игры из компьютерного клуба. Прямо в браузере.</h1>
-          <p className={styles.lead}>
-            Ничего не нужно устанавливать: открываете страницу игры и играете. Начинаем с Need for
-            Speed III, дальше будет больше.
-          </p>
-          <div className={styles.actions}>
-            {featured && (
-              <Link to={`/games/${featured.slug}`} className="button button-primary">
-                Открыть {featured.shortTitle}
-              </Link>
-            )}
-            <a href="#catalog" className="button button-ghost">
-              Смотреть каталог
-            </a>
-          </div>
-        </div>
+      <section className={`container ${styles.intro}`}>
+        <h1 className={styles.title}>
+          Классика ПК.
+          <br />
+          <span className={styles.titleDim}>Прямо в браузере.</span>
+        </h1>
+        <p className={styles.lead}>
+          Игры, в которые рубились в компьютерных клубах конца 90-х. Ничего не нужно
+          устанавливать: открываете страницу и играете.
+        </p>
+      </section>
 
-        <div className={styles.heroArt}>
-          <div className={styles.glow} aria-hidden="true" />
-          <Disc
-            className={styles.heroDisc}
-            label={featured?.shortTitle ?? 'retro'}
-            sublabel={featured ? `${featured.year}` : undefined}
-          />
-        </div>
+      <section className="container" aria-label="В центре внимания">
+        {featured ? (
+          <div
+            className={`${styles.spotlight} cover-host`}
+            style={{ '--game-accent': featured.accent } as CSSProperties}
+          >
+            {/* Размытая обложка — фон баннера, чёткая — постер справа */}
+            <GameArt game={featured} variant="card" className={styles.spotlightBackdrop} decorative />
+            <div className={styles.spotlightBody}>
+              <span className="eyebrow">
+                <span className={`chip chip-${featured.status}`}>{statusLabels[featured.status]}</span>
+                В центре внимания
+              </span>
+              <h2 className={styles.spotlightTitle}>{featured.title}</h2>
+              <p className={styles.spotlightText}>{featured.tagline}</p>
+              <p className={styles.spotlightMeta}>
+                {featured.year} · {platformLabels[featured.platform]} · {featured.genres.join(', ')}
+              </p>
+              <div className={styles.actions}>
+                <Link to={`/games/${featured.slug}`} viewTransition className="button button-primary">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 4.5v15l13-7.5z" fill="currentColor" />
+                  </svg>
+                  Открыть игру
+                </Link>
+                <a href="#catalog" className="button button-ghost">
+                  Весь каталог
+                </a>
+              </div>
+            </div>
+            <Link
+              to={`/games/${featured.slug}`}
+              viewTransition
+              className={styles.poster}
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <GameArt game={featured} variant="card" decorative priority />
+            </Link>
+          </div>
+        ) : (
+          <div className={`${styles.spotlight} ${styles.spotlightEmpty}`} aria-busy={isLoading} />
+        )}
       </section>
 
       <section id="catalog" className={`container ${styles.catalog}`} aria-labelledby="catalog-title">
         <div className={styles.catalogHead}>
-          <h2 id="catalog-title" className={styles.catalogTitle}>
-            Каталог
-          </h2>
+          <div>
+            <h2 id="catalog-title" className={styles.catalogTitle}>
+              Каталог
+            </h2>
+            {!isLoading && !isError && (
+              <p className={styles.count}>
+                {games.length} {plural(games.length, ['игра', 'игры', 'игр'])}, будет больше
+              </p>
+            )}
+          </div>
 
           <div className={styles.controls}>
             <label className={styles.search}>
@@ -84,19 +139,23 @@ export default function HomePage() {
                 <path d="M20 20l-3.5-3.5" />
               </svg>
               <input
+                ref={searchRef}
                 type="search"
                 placeholder="Найти игру"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
               />
+              <kbd className={styles.shortcut} aria-hidden="true">
+                /
+              </kbd>
             </label>
 
-            <div className={styles.filters} role="group" aria-label="Платформа">
+            <div className={styles.segmented} role="group" aria-label="Платформа">
               {filters.map((filter) => (
                 <button
                   key={filter.value}
                   type="button"
-                  className={styles.filter}
+                  className={styles.segment}
                   aria-pressed={platform === filter.value}
                   onClick={() => setPlatform(filter.value)}
                 >
@@ -109,7 +168,7 @@ export default function HomePage() {
 
         {isLoading && (
           <div className={styles.grid} aria-busy="true">
-            {Array.from({ length: 3 }, (_, i) => (
+            {Array.from({ length: 4 }, (_, i) => (
               <div key={i} className={styles.skeleton} />
             ))}
           </div>
@@ -141,8 +200,9 @@ export default function HomePage() {
               </li>
             ))}
             <li className={styles.upcoming} aria-hidden="true">
-              <div className={styles.upcomingCase}>
-                <span>Новые игры появятся здесь</span>
+              <div className={styles.upcomingInner}>
+                <span className={styles.upcomingPlus}>+</span>
+                <span>Новые игры скоро</span>
               </div>
             </li>
           </ul>

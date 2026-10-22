@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useRef, useState, type CSSProperties } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useGetGameBySlugQuery } from '../services/gamesApi'
 import { platformLabels, statusLabels } from '../types/game'
-import GameCover from '../components/GameCover'
+import GameArt from '../components/GameArt'
+import DosPlayer from '../components/DosPlayer'
+import FramePlayer from '../components/FramePlayer'
+import { availableEmulator } from '../emulator/availability'
 import NotFoundPage from './NotFoundPage'
 import styles from './GamePage.module.css'
 
@@ -10,6 +13,7 @@ export default function GamePage() {
   const { slug = '' } = useParams()
   const { data: game, isLoading, isError, refetch } = useGetGameBySlugQuery(slug)
   const [launched, setLaunched] = useState(false)
+  const playerRef = useRef<HTMLDivElement>(null)
 
   if (isLoading) {
     return (
@@ -36,6 +40,13 @@ export default function GamePage() {
     return <NotFoundPage />
   }
 
+  const emulator = availableEmulator(game)
+
+  const launch = () => {
+    setLaunched(true)
+    playerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+
   const facts = [
     { label: 'Год', value: String(game.year) },
     { label: 'Платформа', value: platformLabels[game.platform] },
@@ -45,8 +56,11 @@ export default function GamePage() {
   ]
 
   return (
-    <article className={`container ${styles.page}`}>
-      <Link to="/" className={styles.back}>
+    <article
+      className={`container ${styles.page}`}
+      style={{ '--game-accent': game.accent } as CSSProperties}
+    >
+      <Link to="/" viewTransition className={styles.back}>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M15 5l-7 7 7 7" />
         </svg>
@@ -54,44 +68,84 @@ export default function GamePage() {
       </Link>
 
       <div className={styles.top}>
-        {/* Экран, в котором позже будет работать эмулятор */}
-        <div className={styles.monitor}>
-          <div className={styles.screen}>
+        <div className={styles.stage}>
+          {/* Размытая копия обложки — мягкое свечение цветом игры вокруг окна */}
+          <div className={styles.ambient} aria-hidden="true">
+            <GameArt game={game} variant="card" decorative />
+          </div>
+
+          {/* Окно, в котором позже будет работать эмулятор. Ретро живёт только здесь. */}
+          <div
+            ref={playerRef}
+            className={styles.player}
+            style={{ viewTransitionName: `game-${game.slug}` }}
+          >
             {!launched ? (
               <>
-                <GameCover theme={game.cover} animated className={styles.screenCover} />
-                <div className={styles.screenOverlay}>
-                  <button
-                    type="button"
-                    className={`button button-primary ${styles.play}`}
-                    onClick={() => setLaunched(true)}
-                  >
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M7 4.5v15l13-7.5z" />
+                <GameArt
+                  game={game}
+                  variant="full"
+                  className={styles.playerCover}
+                  focused
+                  animated
+                  priority
+                />
+                <button type="button" className={styles.play} onClick={launch}>
+                  <span className={styles.playIcon} aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
                     </svg>
-                    Запустить игру
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className={styles.boot} role="status">
-                <p className={styles.bootLine}>Загрузка Windows 98…</p>
-                <p className={styles.bootText}>
-                  Эмулятор пока в разработке. Когда {game.shortTitle} заработает, игра запустится
-                  прямо в этом окне.
-                </p>
-                <button type="button" className="button button-ghost" onClick={() => setLaunched(false)}>
-                  Закрыть
+                  </span>
+                  <span className={styles.playLabel}>Запустить игру</span>
                 </button>
+              </>
+            ) : emulator?.engine === 'js-dos' ? (
+              <DosPlayer emulator={emulator} title={game.shortTitle} onExit={() => setLaunched(false)} />
+            ) : emulator?.engine === 'iframe' ? (
+              <FramePlayer emulator={emulator} title={game.shortTitle} onExit={() => setLaunched(false)} />
+            ) : (
+              <div className={styles.desktop} role="status">
+                <div className={styles.window}>
+                  <div className={styles.windowTitle}>
+                    <span>{game.shortTitle}</span>
+                    <span className={styles.windowClose} aria-hidden="true">
+                      ×
+                    </span>
+                  </div>
+                  <div className={styles.windowBody}>
+                    <p className={styles.windowHeading}>Загрузка Windows 98…</p>
+                    <div className={styles.progress} aria-hidden="true">
+                      <span />
+                    </div>
+                    <p>
+                      Эмулятор пока в разработке. Когда {game.shortTitle} заработает, игра
+                      запустится прямо в этом окне.
+                    </p>
+                    <button
+                      type="button"
+                      className={styles.windowButton}
+                      onClick={() => setLaunched(false)}
+                    >
+                      Закрыть
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
         </div>
 
         <header className={styles.info}>
-          <span className={`${styles.status} ${styles[game.status]}`}>{statusLabels[game.status]}</span>
+          <span className={`chip chip-${game.status}`}>{statusLabels[game.status]}</span>
           <h1 className={styles.title}>{game.title}</h1>
           <p className={styles.tagline}>{game.tagline}</p>
+
+          <button type="button" className={`button button-primary ${styles.cta}`} onClick={launch}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 4.5v15l13-7.5z" fill="currentColor" />
+            </svg>
+            Играть в браузере
+          </button>
 
           <dl className={styles.facts}>
             {facts.map((fact) => (
@@ -120,26 +174,26 @@ export default function GamePage() {
         </section>
 
         <aside className={styles.side}>
-          <section aria-labelledby="controls-title">
-            <h2 id="controls-title" className={styles.sectionTitle}>
+          <section className={styles.panel} aria-labelledby="controls-title">
+            <h2 id="controls-title" className={styles.panelTitle}>
               Управление
             </h2>
             <ul className={styles.controls}>
               {game.controls.map((control) => (
                 <li key={control.action}>
+                  <span>{control.action}</span>
                   <span className={styles.keys}>
                     {control.keys.map((key) => (
                       <kbd key={key}>{key}</kbd>
                     ))}
                   </span>
-                  <span>{control.action}</span>
                 </li>
               ))}
             </ul>
           </section>
 
-          <section aria-labelledby="req-title">
-            <h2 id="req-title" className={styles.sectionTitle}>
+          <section className={styles.panel} aria-labelledby="req-title">
+            <h2 id="req-title" className={styles.panelTitle}>
               Что нужно
             </h2>
             <dl className={styles.requirements}>
@@ -153,6 +207,24 @@ export default function GamePage() {
               </div>
             </dl>
           </section>
+
+          {game.license && (
+            <section className={styles.panel} aria-labelledby="license-title">
+              <h2 id="license-title" className={styles.panelTitle}>
+                Лицензия
+              </h2>
+              <p className={styles.license}>{game.license.summary}</p>
+              <ul className={styles.licenseLinks}>
+                {game.license.links.map((link) => (
+                  <li key={link.url}>
+                    <a href={link.url} target="_blank" rel="noopener">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </aside>
       </div>
     </article>

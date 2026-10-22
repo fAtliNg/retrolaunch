@@ -5,14 +5,17 @@
 
 .red,
 .blue {
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
-.animated .red {
+/* Мигалки включаются на странице игры и при наведении на любой контейнер .cover-host */
+.animated .red,
+:global(.cover-host:hover) .red {
   animation: flash 1.1s steps(1, end) infinite;
 }
 
-.animated .blue {
+.animated .blue,
+:global(.cover-host:hover) .blue {
   animation: flash 1.1s steps(1, end) infinite;
   animation-delay: -0.55s;
 }

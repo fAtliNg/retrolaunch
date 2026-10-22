@@ -1,0 +1,148 @@
+.root {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+.theater {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+}
+
+/* В режиме кинотеатра панель видна всегда: это единственный способ выйти, кроме Esc */
+.theater .toolbar {
+  opacity: 1;
+  transform: none;
+}
+
+.root:fullscreen {
+  display: grid;
+  place-items: center;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+/* Загрузка и ошибка — поверх чёрного экрана эмулятора */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: #000;
+  color: var(--text);
+  text-align: center;
+  font-weight: 500;
+}
+
+.hint {
+  max-width: 44ch;
+  color: var(--text-3);
+  font-size: var(--step--1);
+  font-weight: 400;
+}
+
+.hint code {
+  color: var(--text-2);
+}
+
+.overlayActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+  border-top-color: var(--game-accent, var(--accent));
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Панель управления: появляется при наведении, всегда видна при фокусе с клавиатуры */
+.toolbar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  background: rgba(9, 9, 11, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s var(--ease-out);
+}
+
+.root:hover .toolbar,
+.toolbar:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: none) {
+  .toolbar {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.tool {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tool:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tool svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

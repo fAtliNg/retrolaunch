@@ -1,17 +1,27 @@
 import { Link } from 'react-router-dom'
-import Disc from '../components/Disc'
+import { useGetGamesQuery } from '../services/gamesApi'
 import styles from './NotFoundPage.module.css'
 
 export default function NotFoundPage() {
+  const { data: games = [] } = useGetGamesQuery()
+  const randomGame = games.length > 0 ? games[Math.floor(Math.random() * games.length)] : undefined
+
   return (
     <section className={`container ${styles.page}`}>
-      <Disc className={styles.disc} label="404" sublabel="диск не найден" />
-      <div className={styles.text}>
-        <h1 className={styles.title}>Вставьте диск</h1>
-        <p className={styles.lead}>Такой страницы нет. Возможно, игру переименовали или ссылка устарела.</p>
-        <Link to="/" className="button button-primary">
-          Перейти в каталог
+      <p className={styles.code} aria-hidden="true">
+        404
+      </p>
+      <h1 className={styles.title}>Такой страницы нет</h1>
+      <p className={styles.lead}>Возможно, игру переименовали или ссылка устарела.</p>
+      <div className={styles.actions}>
+        <Link to="/" viewTransition className="button button-primary">
+          В каталог
         </Link>
+        {randomGame && (
+          <Link to={`/games/${randomGame.slug}`} viewTransition className="button button-ghost">
+            Случайная игра
+          </Link>
+        )}
       </div>
     </section>
   )

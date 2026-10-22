@@ -7,3 +7,13 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 *.log
+
+# Плеер js-dos копируется из node_modules скриптом scripts/copy-jsdos.mjs
+public/vendor/
+
+# Игры со своих дисков: только локально, не публикуются (см. local-games/README.md)
+local-games/*
+!local-games/README.md
+
+# Контент UQM ~148 МБ: больше лимита GitHub, выкладывается на хостинг отдельно (см. public/engines/uqm/SOURCE.txt)
+public/engines/uqm/uqm-debug.data

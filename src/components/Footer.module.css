@@ -1,54 +1,49 @@
 .footer {
-  margin-top: 96px;
-  border-top: 1px solid var(--line);
-  background: var(--ink-deep);
+  margin-top: clamp(80px, 12vw, 140px);
+  border-top: 1px solid var(--border);
 }
 
 .inner {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  padding-block: 40px 48px;
-}
-
-.about {
-  max-width: 52ch;
-}
-
-.brand {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  margin-bottom: 8px;
+  gap: 24px 48px;
+  padding-block: 32px 40px;
 }
 
 .note {
-  color: var(--muted);
+  max-width: 60ch;
+  color: var(--text-3);
   font-size: var(--step--1);
+}
+
+.brand {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .author {
   display: flex;
   flex-direction: column;
-  gap: 2px;
   text-decoration: none;
-  padding: 14px 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-m);
-  transition: border-color 0.15s ease;
-}
-
-.author:hover {
-  border-color: var(--teal);
+  font-size: var(--step--1);
+  line-height: 1.4;
 }
 
 .authorLabel {
-  color: var(--muted);
-  font-size: var(--step--1);
+  color: var(--text-3);
 }
 
 .authorUrl {
-  font-weight: 700;
-  color: var(--teal);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.author:hover .authorUrl {
+  text-decoration-color: var(--accent);
 }
